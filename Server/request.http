@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:5000
+
+
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "TynTyn2",
+  "password": "TynTyn2"
+}
+
+###
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "TynTyn2",
+  "password": "TynTyn2"
+}
+
+###
+
+GET {{baseUrl}}/api/posts?page=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjZkZmNiMTk4OWM2NmVkOGJkM2VmOWEiLCJpYXQiOjE2NTEzODkxNTB9.8VxH9d0N20IWDLC1wZ5TMOnaPsdp7rAK0fYvXBwS4cc
+###
+
+GET {{baseUrl}}/api/posts/count
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjZkZmNiMTk4OWM2NmVkOGJkM2VmOWEiLCJpYXQiOjE2NTEzODkxNTB9.8VxH9d0N20IWDLC1wZ5TMOnaPsdp7rAK0fYvXBwS4cc
+###
+POST {{baseUrl}}/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjZkZmNiMTk4OWM2NmVkOGJkM2VmOWEiLCJpYXQiOjE2NTEzNzcyMTN9.M9FHuDAHWOllS5bf6lhT-pXNhiGD5XsK5Bmsfk1CVqk
+
+{
+  "title": "Nước uống",
+  "description": "Nước uống",
+  "classify":"Nước uống",
+  "price":770077,
+  "quantity":20
+}
+
+###
+
+PUT {{baseUrl}}/api/posts/62651ba6a3eaaea56a0abb6f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjY0ZmI1NjBjYTI2NThhMDc1MDZlM2MiLCJpYXQiOjE2NTA5NDczOTZ9.QeINAJCqr5GZbM30nLSbxoZIxLpHeNtuPeNPrQCOMv8
+
+{
+  "title": "Vue",
+  "description": "VUEEEEE",
+  "status": "THREE_STAR"
+}
+
+### 
+
+DELETE {{baseUrl}}/api/posts/62678faccfe1fc2c3df06869
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjY0ZmI1NjBjYTI2NThhMDc1MDZlM2MiLCJpYXQiOjE2NTA3OTIxODN9.sggfmfw4VMymvzvJNsGqJViSS-IpcnDlarKiWRA_e_c
