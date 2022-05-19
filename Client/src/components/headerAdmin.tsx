@@ -1,8 +1,10 @@
 import { Avatar, Box, Flex, Img, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
-
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/auth';
 export function HeaderAdmin() {
   const navigate = useNavigate();
+  const { username } = useContext(AuthContext);
   return (
     <Flex justifyContent={'space-between'} width={'100%'} height="24" className="bg-gray-500">
       <Box>
@@ -23,7 +25,7 @@ export function HeaderAdmin() {
                 <Avatar
                   size="md"
                   background={'orange.200'}
-                  name={'Tuyên Nguyễn'}
+                  name={username}
                   src="https://bit.ly/broken-link"
                 />
               </MenuButton>
@@ -35,7 +37,7 @@ export function HeaderAdmin() {
                   color="white"
                   className="hover:text-black"
                   background={'red.500'}
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate('/admin/login')}
                 >
                   Đăng xuất
                 </MenuItem>
@@ -43,7 +45,7 @@ export function HeaderAdmin() {
             </Menu>
           </Box>
           <Box marginLeft={'5'} color="white" marginTop="2" fontSize="xl">
-            Tuyên Nguyễn
+            {username}
           </Box>
         </Flex>
       </Box>

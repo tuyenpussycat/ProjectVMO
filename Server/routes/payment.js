@@ -14,15 +14,15 @@ router.get("/", verifyToken, async (req, res) => {
 });
 
 // @route POST api/posts
-router.post("/", verifyToken, async (req, res) => {
-  const { numberPhone, address, total, list } = req.body;
-  console.log(req.body);
+router.post("/", async (req, res) => {
+  const { numberPhone, address, total, name, quantity } = req.body;
   try {
     const newPayment = new Payment({
       numberPhone,
       address,
       total,
-      list,
+      name,
+      quantity,
     });
     await newPayment.save();
     res.send(newPayment);
@@ -37,6 +37,26 @@ router.get("/:id", verifyToken, async (req, res) => {
     const getPayment = { _id: req.params.id };
     const getCurrentPayment = await Payment.findOne(getPayment);
     res.json(getCurrentPayment);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// @route DELETE api/posts
+router.delete("/delete/:id", verifyToken, async (req, res) => {
+  try {
+    const paymentDeleteCondition = { _id: req.params.id };
+    const deletedPayment = await Payment.findOneAndDelete(
+      paymentDeleteCondition
+    );
+    if (!deletedPayment)
+      return res.status(401).json({
+        success: false,
+        message: "Post not found or user not authorised",
+      });
+    const listPayment = await Payment.find();
+    res.json({ success: true, Payment: listPayment });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, message: "Internal server error" });

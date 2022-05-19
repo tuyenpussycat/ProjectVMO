@@ -1,4 +1,4 @@
-import { OrderStatus } from '../orders.types';
+import { OrderStatus } from '../products.types';
 import { MOCK_ORDER_DETAILS_RESPONSE } from './orders.queries';
 
 export async function createOrder() {

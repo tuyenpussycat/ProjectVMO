@@ -13,7 +13,10 @@ const paymentSchema = new Schema({
   total: {
     type: Number,
   },
-  list: {
+  name: {
+    type: Array,
+  },
+  quantity: {
     type: Array,
   },
 });

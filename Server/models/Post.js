@@ -35,6 +35,24 @@ const productSchema = new Schema({
   img: {
     type: String,
   },
+  comments: [
+    {
+      text: {
+        type: String,
+      },
+      vote: {
+        type: String,
+        enum: [
+          "ONE_STAR",
+          "TWO_STAR",
+          "THREE_STAR",
+          "FOUR_STAR",
+          "FIVE_STAR",
+          "NO_RATE",
+        ],
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("posts", productSchema);

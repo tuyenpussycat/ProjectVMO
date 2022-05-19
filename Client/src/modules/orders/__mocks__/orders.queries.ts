@@ -1,5 +1,5 @@
 import { ListResponse } from '../../shared/common.types';
-import { Item, Order, OrderStatus } from '../orders.types';
+import { Item, Order, OrderStatus } from '../products.types';
 
 export const MOCK_ITEMS: Item[] = [
   {

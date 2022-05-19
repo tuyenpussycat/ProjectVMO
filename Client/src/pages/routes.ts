@@ -1,42 +1,38 @@
-import { OrderManagePage } from './orders/order-manage';
 import { LoginPage } from './login';
-import { NotFoundPage } from './not-found';
-import { OrderCreationPage } from './orders/order-creation';
-import { OrderDetailsPage } from './orders/order-details';
-import { OrderListPage } from './orders/order-list';
-import { RegisterPage } from './register';
-import { ShoppingCartPage } from './orders/shopping-cart';
-import { HomeAminPage } from './orders/home-admin';
-import { OrderEditPage } from './orders/order-edit';
-import { AdminCategoryPage } from './orders/Admin-category';
-import { AdminCategoryEditPage } from './orders/admin-category-edit';
-import { AdminCategoryCreatePage } from './orders/Admin-category-create';
-import { OrderPaymentPage } from './orders/order-payment';
+import { FilterPage } from './filter-page';
+import { OrderDetailsPage } from './products/product-detail';
+import { HomePage } from './home';
+import { ShoppingCartPage } from './shopping-cart';
+import { HomeAminPage } from './admin-pages/admin-home';
+import { OrderEditPage } from './admin-pages/admin-products/admin-product-edit';
+import { OrderPaymentPage } from './payments/products-payment';
+import { PaymentListAdminPage } from './admin-pages/admin-payment/admin-payment-list';
+import { AdminCategoryCreatePage } from './admin-pages/admin-categories/admin-category-create';
+import { OrderCreationPage } from './admin-pages/admin-products/admin-product-creation';
+import { OrderManagePage } from './admin-pages/admin-products/admin-product-list';
+import { AdminCategoryPage } from './admin-pages/admin-categories/admin-category-list';
+import { AdminCategoryEditPage } from './admin-pages/admin-categories/admin-category-edit';
 
 export const routesConfig = [
   {
-    path: '/register',
-    component: RegisterPage,
-  },
-  {
-    path: '/login',
+    path: '/admin/login',
     component: LoginPage,
   },
   {
     path: '/',
-    component: OrderListPage,
+    component: HomePage,
   },
   {
     path: '/admin/posts/create',
     component: OrderCreationPage,
   },
   {
-    path: '/:id',
+    path: '/product/:id',
     component: OrderDetailsPage,
   },
   {
     path: '*',
-    component: NotFoundPage,
+    component: FilterPage,
   },
   {
     path: '/admin/posts',
@@ -70,4 +66,12 @@ export const routesConfig = [
     path: '/payment',
     component: OrderPaymentPage,
   },
+  {
+    path: '/admin/payment',
+    component: PaymentListAdminPage,
+  },
+  // {
+  //   path: '/Đồ%20uống',
+  //   component: PaymentListAdminPage,
+  // },
 ];

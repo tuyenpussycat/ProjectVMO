@@ -53,13 +53,12 @@ router.post("/register", async (req, res) => {
 // access Public
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
-  // console.log(username, password);
   // Simple validation
   if (!username || !password)
-    return res
-      .status(400)
-      .json({ success: false, message: "Missing username and/or password" });
+    return res.status(400).json({
+      success: false,
+      message: "Missing username and/or password",
+    });
 
   try {
     // Check for existing user
@@ -79,7 +78,7 @@ router.post("/login", async (req, res) => {
     // All good
     // Return token
     const accessToken = jwt.sign(
-      { userId: user._id },
+      { userId: user._id, username: username },
       process.env.ACCESS_TOKEN_SECRET
     );
 
@@ -87,6 +86,7 @@ router.post("/login", async (req, res) => {
       success: true,
       message: "User logged in successfully",
       accessToken,
+      username: username,
     });
   } catch (error) {
     console.log(error);

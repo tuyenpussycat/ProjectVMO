@@ -38,7 +38,6 @@ router.post("/", upload.single("img"), async (req, res) => {
 // @route PUT api/posts
 router.put("/:id", verifyToken, async (req, res) => {
   const { name } = req.body;
-  console.log(name);
   try {
     let updateCategory = {
       name: name,

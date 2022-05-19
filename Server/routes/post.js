@@ -12,11 +12,23 @@ const PAGE_SIZE = 15;
 
 router.get("/", async (req, res) => {
   var query = { ...req.query };
-  if (query.title) {
-    query.title = { $regex: ".*" + query.title + ".*" };
+  if (query.status === "") {
+    delete query.status;
   }
-
-  delete query.page;
+  if (query.title === "") {
+    delete query.title;
+  }
+  if (query.title) {
+    query.title = { $regex: ".*" + query.title.replace("20%", " ") + ".*" };
+  }
+  if (query.classify) {
+    query.classify = {
+      $regex: ".*" + query.classify.replace("20%", " ") + ".*",
+    };
+  }
+  if (query.classify === "") {
+    delete query.classify;
+  }
   delete query.sort;
   var { page, sort } = req.query;
 
@@ -31,14 +43,12 @@ router.get("/", async (req, res) => {
         .limit(PAGE_SIZE)
         .sort(sort);
       const user = await User.find({ _id: req.userId });
-      // console.log(req.userId);
       let pageLimit;
       if (count % PAGE_SIZE === 0) {
         pageLimit = count / PAGE_SIZE;
       } else {
         pageLimit = Math.floor(count / PAGE_SIZE) + 1;
       }
-      // console.log(pageLimit);
       res.json({ success: true, posts, user, page, pageLimit });
     } catch (error) {
       console.log(error);
@@ -98,16 +108,18 @@ router.post("/", upload.single("img"), async (req, res) => {
 // @route PUT api/posts
 
 router.put("/:id", async (req, res) => {
-  const { title, description, status, classify, price, quantity } = req.body;
-  console.log(req.body);
+  const { title, description, status, classify, price, quantity, comments } =
+    req.body;
   // Simple validation
-  if (!title)
-    return res
-      .status(400)
-      .json({ success: false, message: "Title is required" });
+  console.log(comments);
+  // if (!title)
+  //   return res
+  //     .status(400)
+  //     .json({ success: false, message: "Title is required" });
 
   try {
     let updatedPost = {
+      comments,
       title,
       description,
       status: status || "NO_RATE",
@@ -121,6 +133,42 @@ router.put("/:id", async (req, res) => {
     updatedPost = await Post.findOneAndUpdate(
       postUpdateCondition,
       updatedPost,
+      { new: true }
+    );
+
+    // User not authorised to update post or post not found
+    if (!updatedPost)
+      return res.status(401).json({
+        success: false,
+        message: "Post not found or user not authorised",
+      });
+
+    res.json({
+      success: true,
+      message: "Excellent progress!",
+      post: updatedPost,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+router.put("/comment/:id", async (req, res) => {
+  const { comments } = req.body;
+  // Simple validation
+  console.log(req.body);
+  try {
+    let updatedPost = {
+      comments,
+    };
+
+    const postUpdateCondition = { _id: req.params.id };
+    updatedPost = await Post.findByIdAndUpdate(
+      postUpdateCondition,
+      {
+        $push: updatedPost,
+      },
       { new: true }
     );
 
