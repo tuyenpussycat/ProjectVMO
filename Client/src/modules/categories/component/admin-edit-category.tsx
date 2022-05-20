@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { useState, useCallback, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { LayoutAdmin } from '../../../components/layouts/layoutAdmin';
+import { LayoutAdmin } from '../../../components/layouts/layout-admin';
 import { deleteCategory, editCategory } from '../category.mutation';
 import { fetchCategoryDetails } from '../category.queries';
 import { editOrder, cancelOrder } from '../../orders/products.mutation';

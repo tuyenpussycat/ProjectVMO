@@ -11,10 +11,11 @@ export function HeaderAdmin() {
         <Flex>
           <Img
             className="ml-7"
-            width={'24'}
+            width={'16'}
+            marginTop="4"
             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
           ></Img>
-          <Box className="text-5xl mt-5 mx-5 text-white">Admin</Box>
+          <Box className="text-4xl mt-[26px] mx-5 text-white">Admin</Box>
         </Flex>
       </Box>
       <Box className="mt-6 mr-16">

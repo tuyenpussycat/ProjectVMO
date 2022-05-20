@@ -22,7 +22,7 @@ import { useContext, useState, useCallback, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/auth';
 import { ListResponse } from 'src/modules/shared/common.types';
-import { LayoutAdmin } from '../../../components/layouts/layoutAdmin';
+import { LayoutAdmin } from '../../../components/layouts/layout-admin';
 import { fetchPayments } from '../payment.queries';
 import { Payment } from '../payment.types';
 import { deletePayment } from '../payment.mutations';

@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
-import { HeaderAdmin } from '../headerAdmin';
+import { HeaderAdmin } from '../header-admin';
 import { NavLink } from 'react-router-dom';
 import { HamburgerIcon } from '@chakra-ui/icons';
 

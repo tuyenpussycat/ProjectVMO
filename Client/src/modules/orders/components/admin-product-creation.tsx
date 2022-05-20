@@ -78,6 +78,7 @@ export function OrderCreation() {
     setQuantity('');
     setDescription('');
   }, []);
+  const [preview, setPreview] = useState<any>(null);
   const handleCreateOrder = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       try {
@@ -121,6 +122,17 @@ export function OrderCreation() {
     },
     [title, description, classify, price, quantity, status],
   );
+  useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreview(null);
+    }
+  }, [file]);
   return (
     <LayoutAdmin>
       <Heading
@@ -148,6 +160,7 @@ export function OrderCreation() {
               accept=".png,.jpeg,.jpg"
               onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
             ></input>
+            <img className="my-4" width={'15%'} src={preview}></img>
           </FormControl>
           <Box mb="6">
             <FormControl isRequired>

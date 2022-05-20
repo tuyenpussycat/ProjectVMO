@@ -38,5 +38,5 @@ export interface Item {
 
 export type OrderCreationPayload = Pick<
   Order,
-  'title' | 'description' | 'classify' | 'quantity' | 'price' | 'comments'
+  'title' | 'description' | 'classify' | 'quantity' | 'price'
 >;

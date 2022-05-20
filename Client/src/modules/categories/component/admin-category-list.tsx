@@ -23,7 +23,7 @@ import { useContext, useState, useCallback, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/auth';
 import { ListResponse } from 'src/modules/shared/common.types';
-import { LayoutAdmin } from '../../../components/layouts/layoutAdmin';
+import { LayoutAdmin } from '../../../components/layouts/layout-admin';
 import { deleteCategory } from '../category.mutation';
 import { fetchCategory } from '../category.queries';
 import { Category } from '../category.types';
@@ -133,7 +133,14 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
           </Link>
         </Button>
 
-        <Button mt={'3.5'} onClick={onOpen} marginLeft={'5'} background={'red.500'} color="white">
+        <Button
+          mt={'3.5'}
+          className="hover:text-black"
+          onClick={onOpen}
+          marginLeft={'5'}
+          background={'red.500'}
+          color="white"
+        >
           Xóa
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -147,7 +154,13 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
               <Button colorScheme="blue" mr={3} onClick={onClose}>
                 Hủy
               </Button>
-              <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">
+              <Button
+                className="hover:text-black"
+                background={'red.500'}
+                color="white"
+                onClick={deleteItem}
+                variant="ghost"
+              >
                 Xóa
               </Button>
             </ModalFooter>

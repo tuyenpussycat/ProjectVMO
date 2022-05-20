@@ -8,17 +8,20 @@ import {
   Textarea,
   useToast,
 } from '@chakra-ui/react';
-import { useState, useCallback, ChangeEvent, FormEvent } from 'react';
+import { useState, useCallback, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { createCategory } from '../category.mutation';
-import { LayoutAdmin } from '../../../components/layouts/layoutAdmin';
+import { LayoutAdmin } from '../../../components/layouts/layout-admin';
+import { InvertColorsOff } from '@mui/icons-material';
 
 export function AdminCategoryCreate() {
+  const reader = new FileReader();
   const navigate = useNavigate();
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
   const [file, setFile] = useState<any>(null);
+  const [preview, setPreview] = useState<any>(null);
   const handleChangeName = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
     setName(event.target.value);
   }, []);
@@ -57,6 +60,18 @@ export function AdminCategoryCreate() {
     },
     [name],
   );
+  useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreview(null);
+    }
+  }, [file]);
+
   return (
     <LayoutAdmin>
       <Heading
@@ -84,6 +99,7 @@ export function AdminCategoryCreate() {
               accept=".png,.jpeg,.jpg"
               onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
             ></input>
+            <img className="my-4" width={'20%'} src={preview}></img>
           </FormControl>
           <FormControl isRequired>
             <Flex>

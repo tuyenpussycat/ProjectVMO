@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/auth';
-import { LayoutAdmin } from '../components/layouts/layoutAdmin';
+import { LayoutAdmin } from '../components/layouts/layout-admin';
 
 export function HomeAdmin() {
   const { username } = useContext(AuthContext);
