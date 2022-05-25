@@ -7,7 +7,7 @@ export function HookUsage(maxQuantity: any) {
     step: 1,
     defaultValue: 1,
     min: 1,
-    max: maxQuantity,
+    max: maxQuantity.maxQuantity,
   });
   const { setGetNumber } = useContext(AuthContext);
   const inc = getIncrementButtonProps();

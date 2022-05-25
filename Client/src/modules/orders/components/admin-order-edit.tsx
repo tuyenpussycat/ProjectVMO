@@ -165,10 +165,10 @@ export function OrderEdit() {
               marginRight={'5'}
               color="white"
               className="hover:text-black"
-              background="green.500"
+              background="gray.500"
               onClick={() => setCheck(!check)}
             >
-              Chi tiết
+              Sửa
             </Button>
           )}
 

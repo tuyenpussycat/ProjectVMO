@@ -73,7 +73,7 @@ export function OrderCreation() {
   }, []);
   const handleClear = useCallback(() => {
     setTittle('');
-    setClassify('');
+    // setClassify(null);
     setPrice('');
     setQuantity('');
     setDescription('');
@@ -222,17 +222,18 @@ export function OrderCreation() {
             <Flex>
               <FormControl mr="4">
                 <FormLabel>Giá</FormLabel>
-                <Input
-                  className="ring-1 ring-gray-300"
+                <input
+                  className="ring-1 w-[90%] h-10 p-2 rounded ring-gray-300"
                   type={'number'}
+                  min={1}
                   value={price}
                   onChange={handleChangePrice}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Số lượng</FormLabel>
-                <Input
-                  className="ring-1 ring-gray-300"
+                <input
+                  className="ring-1 w-[90%] h-10 p-2 rounded ring-gray-300"
                   type={'number'}
                   value={quantity}
                   onChange={handleChangeQuantity}

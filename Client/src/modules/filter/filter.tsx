@@ -82,8 +82,8 @@ export function Filter() {
                 <Box marginTop={2}>SẢN PHẨM TÌM KIẾM VỚI '{Object.values(params)[0]}'</Box>
               </Flex>
             </Box>
-            <Flex gap={'2rem'}>
-              <Box width={'18.22rem'}>
+            <Flex>
+              <Box width={'17rem'}>
                 <Flex marginTop={'1rem'} justifyContent={'center'}>
                   <Image
                     width={'1rem'}
@@ -240,7 +240,7 @@ export function OrderListRow({ posts }: OrderListRowProps) {
       <Box
         p={2}
         borderWidth="1px"
-        width="16.3rem"
+        width="16.185rem"
         height="21rem"
         className="bg-white border-2 hover:border-red-500 hover:translate-y-[-3px]"
       >

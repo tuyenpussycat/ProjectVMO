@@ -85,7 +85,7 @@ export function AdminCategoryCreate() {
         borderColor="gray.200"
         color={'purple.500'}
       >
-        TẠO SẢN PHẨM MỚI
+        TẠO LOẠI HÀNG MỚI
       </Heading>
 
       <Box paddingX={'32'} paddingY="4" className="shadow-sm bg-white">
