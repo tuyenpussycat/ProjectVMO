@@ -140,7 +140,7 @@ export function OrderEdit() {
           {check ? (
             <Button
               className="hover:text-black"
-              background="blue.500"
+              background="green.500"
               color="white"
               marginRight={'5'}
               onClick={handleEditOrder}
@@ -165,7 +165,7 @@ export function OrderEdit() {
               marginRight={'5'}
               color="white"
               className="hover:text-black"
-              background="gray.500"
+              background="green.500"
               onClick={() => setCheck(!check)}
             >
               Sửa
@@ -191,7 +191,7 @@ export function OrderEdit() {
               </ModalBody>
 
               <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
+                <Button colorScheme="green" mr={3} onClick={onClose}>
                   Hủy
                 </Button>
                 <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">

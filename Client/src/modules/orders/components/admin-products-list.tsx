@@ -75,9 +75,9 @@ export function OrderManage() {
 
   return (
     <LayoutAdmin>
-      <Flex justifyContent={'space-between'} className="mt-6">
+      <Flex justifyContent={'space-between'}>
         <Box className="ml-40">
-          <Button colorScheme="purple" size="md" onClick={() => navigate('/admin/posts/create')}>
+          <Button colorScheme="green" size="md" onClick={() => navigate('/admin/posts/create')}>
             Thêm sản phẩm
           </Button>
         </Box>
@@ -109,7 +109,7 @@ export function OrderManage() {
         </InputGroup>
       </Flex>
 
-      <Box mt="4">
+      <Box mt="8">
         <Table
           borderX="1px"
           borderBottom={'2px'}
@@ -214,7 +214,7 @@ export function OrderListRowManage({ order }: OrderListRowProps) {
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent marginTop={'32'}>
             <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
@@ -222,7 +222,7 @@ export function OrderListRowManage({ order }: OrderListRowProps) {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="green" mr={3} onClick={onClose}>
                 Hủy
               </Button>
               <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">

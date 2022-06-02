@@ -46,8 +46,8 @@ export function AdminCategory() {
 
   return (
     <LayoutAdmin>
-      <Box className="ml-40 mt-8">
-        <Button colorScheme="purple" size="md" onClick={() => navigate('/admin/category/create')}>
+      <Box className="ml-40">
+        <Button colorScheme="green" size="md" onClick={() => navigate('/admin/category/create')}>
           Thêm danh mục
         </Button>
       </Box>
@@ -145,13 +145,13 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent marginTop={'32'}>
             <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
             <ModalCloseButton />
             <ModalBody></ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="green" mr={3} onClick={onClose}>
                 Hủy
               </Button>
               <Button

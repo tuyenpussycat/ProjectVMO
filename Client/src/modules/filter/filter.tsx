@@ -240,7 +240,7 @@ export function OrderListRow({ posts }: OrderListRowProps) {
       <Box
         p={2}
         borderWidth="1px"
-        width="16.185rem"
+        width="17.02rem"
         height="21rem"
         className="bg-white border-2 hover:border-red-500 hover:translate-y-[-3px]"
       >

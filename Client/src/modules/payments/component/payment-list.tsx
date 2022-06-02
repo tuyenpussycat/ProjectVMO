@@ -47,7 +47,6 @@ export function PaymentListAdmin() {
         as="h1"
         size="lg"
         mb="4"
-        mt="9"
         pb="3"
         borderBottom="2px"
         borderColor="gray.200"
@@ -125,13 +124,12 @@ export function PaymentListManage({ payment }: PaymentListProps) {
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent marginTop={'32'}>
             <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
             <ModalCloseButton />
             <ModalBody></ModalBody>
-
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="green" mr={3} onClick={onClose}>
                 Hủy
               </Button>
               <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">

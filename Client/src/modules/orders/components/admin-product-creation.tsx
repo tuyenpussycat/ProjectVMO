@@ -137,7 +137,6 @@ export function OrderCreation() {
     <LayoutAdmin>
       <Heading
         as="h1"
-        mt={'5'}
         ml="5"
         size="md"
         mb="5"
