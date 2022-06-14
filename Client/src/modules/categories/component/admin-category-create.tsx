@@ -27,6 +27,7 @@ export function AdminCategoryCreate() {
   }, []);
   const handleClear = useCallback(() => {
     setName('');
+    setFile('');
   }, []);
   const handleCreateOrder = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
@@ -77,30 +78,19 @@ export function AdminCategoryCreate() {
       <Heading
         as="h1"
         mt={'5'}
-        ml="5"
+        ml="32"
         size="md"
         mb="5"
         pb="3"
         borderBottom="2px"
         borderColor="gray.200"
-        color={'purple.500'}
+        color={'black'}
       >
         TẠO LOẠI HÀNG MỚI
       </Heading>
 
       <Box paddingX={'32'} paddingY="4" className="shadow-sm bg-white">
         <form action="" onSubmit={handleCreateOrder}>
-          <FormControl>
-            <FormLabel>Chọn ảnh</FormLabel>
-            <input
-              className="outline-none"
-              type={'file'}
-              name="img"
-              accept=".png,.jpeg,.jpg"
-              onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
-            ></input>
-            <img className="my-4" width={'20%'} src={preview}></img>
-          </FormControl>
           <FormControl isRequired>
             <Flex>
               <FormLabel>Tên sản phẩm</FormLabel>
@@ -112,6 +102,17 @@ export function AdminCategoryCreate() {
               onChange={handleChangeName}
             />
           </FormControl>
+          <FormControl mt={5}>
+            <FormLabel>Chọn ảnh</FormLabel>
+            <input
+              className="outline-none"
+              type={'file'}
+              name="img"
+              accept=".png,.jpeg,.jpg"
+              onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
+            ></input>
+            <img className="my-4" width={'20%'} src={preview}></img>
+          </FormControl>
           <Flex mt="4" justifyContent="flex-end">
             <Button
               onClick={handleClear}
@@ -122,7 +123,7 @@ export function AdminCategoryCreate() {
               Làm mới{' '}
             </Button>
             <Button colorScheme="blue" type="submit" isLoading={isLoading}>
-              Create
+              Tạo sản phẩm
             </Button>
           </Flex>
         </form>

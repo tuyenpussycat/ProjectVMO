@@ -60,7 +60,6 @@ export function OrderManage() {
     }
     getOrders();
   }, [page, changeData, valueSearch]);
-
   const onChange = (e: any) => {
     setKeyword(e.target.value);
   };
@@ -75,9 +74,12 @@ export function OrderManage() {
 
   return (
     <LayoutAdmin>
+      <Flex className="my-10 ml-40 ">
+        <Box className="font-bold text-3xl">TỔNG SẢN PHẨM : {orders?.count}</Box>
+      </Flex>
       <Flex justifyContent={'space-between'}>
         <Box className="ml-40">
-          <Button colorScheme="green" size="md" onClick={() => navigate('/admin/posts/create')}>
+          <Button colorScheme="blue" size="md" onClick={() => navigate('/admin/posts/create')}>
             Thêm sản phẩm
           </Button>
         </Box>
@@ -108,7 +110,6 @@ export function OrderManage() {
           />
         </InputGroup>
       </Flex>
-
       <Box mt="8">
         <Table
           borderX="1px"
@@ -121,18 +122,10 @@ export function OrderManage() {
           <Thead className="w-10 h-10 bg-gray-600">
             <Tr>
               <Th color={'white'}></Th>
-              <Th textAlign="center" color={'white'}>
-                Tên sản phẩm
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Giá sản phẩm
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Số lượng
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Đánh giá
-              </Th>
+              <Th color={'white'}>Tên sản phẩm</Th>
+              <Th color={'white'}>Giá sản phẩm</Th>
+              <Th color={'white'}>Số lượng</Th>
+              <Th color={'white'}>Đánh giá</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -150,7 +143,7 @@ export function OrderManage() {
             )}
           </Tbody>
         </Table>
-        <Flex mt="8" justifyContent="center">
+        <Flex mt="8" justifyContent="center" paddingBottom={'10'}>
           <Pagination
             onPrev={clickPrev}
             onNext={clickNext}
@@ -183,21 +176,17 @@ export function OrderListRowManage({ order }: OrderListRowProps) {
 
   return (
     <Tr>
-      <Td width={'15%'}>
-        <img src={order.img} width="100%"></img>
+      <Td width={'15%'} paddingY="3">
+        <img src={order.img} className="h-20" width="100%"></img>
       </Td>
-      <Td className="text-xl" textAlign="center">
-        {order.title}
-      </Td>
-      <Td className="text-xl" textAlign="center">
-        {Number(order.price).toLocaleString('ms')}
-      </Td>
-      <Td textAlign="center">{order.quantity}</Td>
-      <Td textAlign="center">
+      <Td className="text-lg">{order.title}</Td>
+      <Td className="text-lg">{Number(order.price).toLocaleString('ms')}</Td>
+      <Td>{order.quantity}</Td>
+      <Td>
         <OrderStatusBadge status={order.status} />
       </Td>
       <Td padding={'0'}>
-        <Button mt={'3.5'} background={'green.500'}>
+        <Button mt={'3.5'} background={'blue.500'}>
           <Link
             _hover={{ textDecoration: 'none' }}
             as={NavLink}

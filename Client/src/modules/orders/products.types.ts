@@ -3,6 +3,7 @@
 /* eslint-disable no-use-before-define */
 
 export interface Order {
+  post: any;
   img: string;
   posts: string;
   _id: string;

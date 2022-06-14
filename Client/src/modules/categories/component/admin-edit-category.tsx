@@ -103,7 +103,7 @@ export function AdminCategoryEdit() {
           {check ? (
             <Button
               className="hover:text-black"
-              background="green.500"
+              background="blue.500"
               color="white"
               marginRight={'5'}
               onClick={handleCreateOrder}
@@ -116,7 +116,7 @@ export function AdminCategoryEdit() {
           {check ? (
             <Button
               className="hover:text-black"
-              background="red.500"
+              background="blue.500"
               color="white"
               marginRight={'5'}
               onClick={() => setCheck(!check)}
@@ -128,7 +128,7 @@ export function AdminCategoryEdit() {
               marginRight={'5'}
               color="white"
               className="hover:text-black"
-              background="green.500"
+              background="blue.500"
               onClick={() => setCheck(!check)}
             >
               Sửa

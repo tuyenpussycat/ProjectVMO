@@ -23,9 +23,9 @@ const activeLinkStyle = {
 export function LayoutAdmin({ children }: { children: ReactNode }) {
   return (
     <Box w="100%" className="m-[auto] bg-[#f7f7f7]">
-      <Box height={'32'}>
+      {/* <Box height={'32'}>
         <HeaderAdmin></HeaderAdmin>
-      </Box>
+      </Box> */}
       <Flex>
         <Box width={'20%'}>
           <AdminSidebar></AdminSidebar>

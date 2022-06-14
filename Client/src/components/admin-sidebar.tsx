@@ -1,11 +1,7 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Avatar,
   Box,
+  Button,
   Flex,
   Img,
   Link,
@@ -14,23 +10,106 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react';
-import { ReactNode } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { HamburgerIcon } from '@chakra-ui/icons';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/auth';
+import CategoryIcon from '@mui/icons-material/Category';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import LogoutIcon from '@mui/icons-material/Logout';
 const activeLinkStyle = {
   color: 'white',
-  backgroundColor: 'black',
+  backgroundColor: 'rgb(55 65 81)',
 };
 
 export function AdminSidebar() {
   const navigate = useNavigate();
   const { username } = useContext(AuthContext);
   return (
-    <Box width={'20%'} marginTop="-8">
-      <Box width={'19rem'} height="100vw" className="fixed" background={'gray.500'}>
-        <Box className=" p-6 shadow-sm">
+    <Box width={'20%'}>
+      <Box width={'20rem'} height="100vw" className="fixed" background={'black'}>
+        <Box>
+          <Flex justifyContent={'center'}>
+            <Box className="text-2xl mt-8 text-white">ADMIN </Box>
+            <Box className="text-white text-2xl ml-3 opacity-70 mt-8">DASHBOARD</Box>
+          </Flex>
+        </Box>
+        <Box className="text-white ml-12 mt-7 mb-9 opacity-50">MENU</Box>
+
+        <Flex justifyContent={'center'} marginY="5">
+          <Button
+            padding={0}
+            backgroundColor={'black'}
+            color="whiteAlpha.700"
+            className="hover:bg-red-600"
+            _hover={{ color: 'white', backgroundColor: 'rgb(55 65 81)' }}
+          >
+            <Link
+              paddingX={9}
+              paddingY={4}
+              _hover={{ textDecoration: 'none' }}
+              as={NavLink}
+              _activeLink={activeLinkStyle}
+              className="rounded-xl"
+              to={`/admin/posts`}
+            >
+              <Flex>
+                <InventoryIcon width={'8'} height="8" className="mr-4"></InventoryIcon>
+                <Box>Quản lý sản phẩm</Box>
+              </Flex>
+            </Link>
+          </Button>
+        </Flex>
+        <Flex justifyContent={'center'} marginY="5">
+          <Button
+            padding={0}
+            backgroundColor={'black'}
+            color="whiteAlpha.700"
+            className="hover:bg-red-600"
+            _hover={{ color: 'white', backgroundColor: 'rgb(55 65 81)' }}
+          >
+            <Link
+              paddingX={9}
+              paddingY={4}
+              _hover={{ textDecoration: 'none' }}
+              as={NavLink}
+              _activeLink={activeLinkStyle}
+              className="rounded-xl"
+              to={`/admin/category`}
+            >
+              <Flex>
+                <CategoryIcon width={'8'} height="8" className="mr-4"></CategoryIcon>
+                <Box>Quản lý danh mục</Box>
+              </Flex>
+            </Link>
+          </Button>
+        </Flex>
+        <Flex justifyContent={'center'} marginY="5">
+          <Button
+            padding={0}
+            backgroundColor={'black'}
+            color="whiteAlpha.700"
+            className="hover:bg-red-600"
+            _hover={{ color: 'white', backgroundColor: 'rgb(55 65 81)' }}
+          >
+            <Link
+              paddingX={9}
+              paddingY={4}
+              _hover={{ textDecoration: 'none' }}
+              as={NavLink}
+              _activeLink={activeLinkStyle}
+              className="rounded-xl"
+              to={`/admin/payment`}
+            >
+              <Flex>
+                <PaymentsIcon width={'8'} height="8" className="mr-4"></PaymentsIcon>
+                <Box>Quản lý đơn hàng</Box>
+              </Flex>
+            </Link>
+          </Button>
+        </Flex>
+        <Box className="mt-[110%] shadow-sm">
+          <Box className="text-white ml-12 my-3 opacity-50">PROFILE</Box>
           <Flex justifyContent={'center'}>
             <Menu>
               <MenuButton>
@@ -44,82 +123,29 @@ export function AdminSidebar() {
               <MenuList>
                 <MenuItem justifyContent={'center'}>Trang cá nhân</MenuItem>
                 <MenuItem justifyContent={'center'}>Chỉnh sửa thông tin</MenuItem>
-                <MenuItem
-                  justifyContent={'center'}
-                  color="white"
-                  className="hover:text-black"
-                  background={'red.500'}
-                  onClick={() => navigate('/admin/login')}
-                >
-                  Đăng xuất
-                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
-          <Flex justifyContent={'center'} color="white" marginTop="2" fontSize="xl">
+          <Flex
+            className="text-white"
+            justifyContent={'center'}
+            color="white"
+            marginTop="3"
+            fontSize="xl"
+          >
             {username}
           </Flex>
         </Box>
-        {/* <Link
-          as={NavLink}
-          to={`/admin`}
-          _hover={{ textDecoration: 'none' }}
-          _activeLink={activeLinkStyle}
+        <Flex
+          justifyContent={'center'}
+          className="cursor-pointer "
+          mt="10"
+          color={'white'}
+          onClick={() => navigate('/admin/login')}
         >
-          <Box className="shadow-sm text-xl p-4 text-white"> HOME</Box>{' '}
-        </Link> */}
-
-        <Link
-          _hover={{ textDecoration: 'none' }}
-          _activeLink={activeLinkStyle}
-          as={NavLink}
-          to={`/admin/posts`}
-        >
-          {' '}
-          <Flex className="hover:bg-gray-600 p-4 shadow-sm">
-            <Img
-              src="https://cdn-icons-png.flaticon.com/512/1524/1524539.png"
-              width={'7'}
-              height="7"
-            ></Img>
-
-            <Box className="ml-6 text-lg hover:text-white">Quản lý sản phẩm</Box>
-          </Flex>
-        </Link>
-        <Link
-          _hover={{ textDecoration: 'none' }}
-          _activeLink={activeLinkStyle}
-          as={NavLink}
-          to={`/admin/category`}
-        >
-          {' '}
-          <Flex className="hover:bg-gray-600 p-4 shadow-sm">
-            <Img
-              src="https://cdn-icons-png.flaticon.com/512/7479/7479956.png"
-              width={'7'}
-              height="7"
-            ></Img>
-
-            <Box className="ml-6 text-lg hover:text-white">Quản lý danh mục</Box>
-          </Flex>
-        </Link>
-        <Link
-          _hover={{ textDecoration: 'none' }}
-          _activeLink={activeLinkStyle}
-          as={NavLink}
-          to={`/admin/payment`}
-        >
-          {' '}
-          <Flex className="hover:bg-gray-600 p-4 shadow-sm">
-            <Img
-              src="https://cdn-icons-png.flaticon.com/512/1611/1611154.png"
-              width={'7'}
-              height="7"
-            ></Img>
-
-            <Box className="ml-6 text-lg hover:text-white">Quản lý đơn hàng</Box>
-          </Flex>
-        </Link>
+          <LogoutIcon></LogoutIcon>
+          <Box className="ml-3">Đăng xuất</Box>
+        </Flex>
       </Box>
     </Box>
   );

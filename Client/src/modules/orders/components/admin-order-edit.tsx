@@ -132,15 +132,20 @@ export function OrderEdit() {
 
   return (
     <LayoutAdmin>
+      <Flex mt={'8'} ml="8">
+        <Button bg={'blue.500'} color="white">
+          Tạo sản phẩm mới
+        </Button>
+      </Flex>
       <Flex justifyContent={'space-between'} marginTop="5">
         <Heading ml="8" as="h1" size="md" mb="8" pb="3" borderBottom="2px" borderColor="gray.200">
           Order {order?._id}
         </Heading>
-        <Box>
+        <Box mt={8}>
           {check ? (
             <Button
               className="hover:text-black"
-              background="green.500"
+              background="blue.500"
               color="white"
               marginRight={'5'}
               onClick={handleEditOrder}
@@ -153,7 +158,7 @@ export function OrderEdit() {
           {check ? (
             <Button
               className="hover:text-black"
-              background="red.500"
+              background="blue.500"
               color="white"
               marginRight={'5'}
               onClick={() => setCheck(!check)}
@@ -165,7 +170,7 @@ export function OrderEdit() {
               marginRight={'5'}
               color="white"
               className="hover:text-black"
-              background="green.500"
+              background="blue"
               onClick={() => setCheck(!check)}
             >
               Sửa
@@ -204,7 +209,7 @@ export function OrderEdit() {
       </Flex>
       <Flex>
         <Box ml="8" width={'24rem'} mr="8">
-          <img src={order?.img} width="100%"></img>
+          <img src={order?.img} className="h-64" width="100%"></img>
         </Box>
 
         {check ? (
@@ -256,7 +261,7 @@ export function OrderEdit() {
               <Box></Box>
             </Flex>
             <Flex className="mt-[1rem]">
-              <Box>
+              <Box pb={10}>
                 <FormControl>
                   <Flex>
                     <FormLabel width={'32'}>Đánh giá</FormLabel>
@@ -315,7 +320,7 @@ export function OrderEdit() {
               <Box mr="4" fontWeight="medium" minW="32">
                 Đánh giá:{' '}
               </Box>
-              <Box>
+              <Box paddingBottom={'10'}>
                 <OrderStatusBadge status={order?.status} />
               </Box>
             </Flex>

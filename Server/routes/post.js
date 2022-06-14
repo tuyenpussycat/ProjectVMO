@@ -49,7 +49,7 @@ router.get("/", async (req, res) => {
       } else {
         pageLimit = Math.floor(count / PAGE_SIZE) + 1;
       }
-      res.json({ success: true, posts, user, page, pageLimit });
+      res.json({ success: true, posts, user, page, pageLimit, count });
     } catch (error) {
       console.log(error);
       res

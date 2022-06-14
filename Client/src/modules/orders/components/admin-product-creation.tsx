@@ -22,6 +22,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { fetchCategory } from '../../categories/category.queries';
 import { Category } from '../../categories/category.types';
 import { ListResponse } from 'src/modules/shared/common.types';
+
 // const shippingsSchema = yup.string().required('Shipping address is required.');
 type FormItem = Item & {
   id: string;
@@ -41,6 +42,7 @@ export function OrderCreation() {
   const [status, setStatus] = useState('');
   const [file, setFile] = useState<any>(null);
   const [category, setCategory] = useState<ListResponse<Category> | undefined>();
+
   useEffect(() => {
     async function getCategory() {
       const data = await fetchCategory();
@@ -77,6 +79,7 @@ export function OrderCreation() {
     setPrice('');
     setQuantity('');
     setDescription('');
+    setFile('');
   }, []);
   const [preview, setPreview] = useState<any>(null);
   const handleCreateOrder = useCallback(
@@ -97,16 +100,12 @@ export function OrderCreation() {
         if (res) {
           toast({
             position: 'top-right',
-            description: 'Order created',
+            description: 'Tạo sản phẩm thành công',
             status: 'success',
             isClosable: true,
           });
-          setTittle('');
-          setClassify('');
-          setPrice('');
-          setQuantity('');
-          setDescription('');
           setIsLoading(false);
+          navigate(`/admin/edit/${res?.post._id}`);
         } else {
           setIsLoading(false);
           toast({
@@ -139,28 +138,18 @@ export function OrderCreation() {
         as="h1"
         ml="5"
         size="md"
-        mb="5"
+        my="5"
         pb="3"
+        marginLeft={'32'}
         borderBottom="2px"
         borderColor="gray.200"
-        color={'purple.500'}
+        color={'black'}
       >
         TẠO SẢN PHẨM MỚI
       </Heading>
 
       <Box paddingX={'32'} paddingY="4" className="shadow-sm bg-white">
         <form action="" onSubmit={handleCreateOrder}>
-          <FormControl>
-            <FormLabel>Chọn ảnh</FormLabel>
-            <input
-              className="outline-none"
-              type={'file'}
-              name="img"
-              accept=".png,.jpeg,.jpg"
-              onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
-            ></input>
-            <img className="my-4" width={'15%'} src={preview}></img>
-          </FormControl>
           <Box mb="6">
             <FormControl isRequired>
               <Flex>
@@ -172,6 +161,17 @@ export function OrderCreation() {
                 height="5"
                 onChange={handleChangeTitle}
               />
+            </FormControl>
+            <FormControl my={6}>
+              <FormLabel>Chọn ảnh</FormLabel>
+              <input
+                className="outline-none"
+                type={'file'}
+                name="img"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e: { target: { files: any[] } | any }) => setFile(e.target.files[0])}
+              ></input>
+              <img className="my-4" width={'15%'} src={preview}></img>
             </FormControl>
             <Flex>
               <FormControl isRequired>
@@ -209,7 +209,7 @@ export function OrderCreation() {
                 </Select>
               </FormControl>
             </Flex>
-            <FormControl mt={'3'} isRequired>
+            <FormControl my={6} isRequired>
               <FormLabel>Chi tiết sản phẩm</FormLabel>
               <Textarea
                 className="ring-1 ring-gray-300"
@@ -251,7 +251,7 @@ export function OrderCreation() {
               Làm mới{' '}
             </Button>
             <Button colorScheme="blue" type="submit" isLoading={isLoading}>
-              Create
+              Tạo sản phẩm
             </Button>
           </Flex>
         </form>

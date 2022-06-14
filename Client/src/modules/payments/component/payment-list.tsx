@@ -46,11 +46,11 @@ export function PaymentListAdmin() {
         ml={'10'}
         as="h1"
         size="lg"
-        mb="4"
+        my="4"
         pb="3"
         borderBottom="2px"
         borderColor="gray.200"
-        textColor={'purple.500'}
+        textColor={'black'}
       >
         QUẢN LÝ ĐƠN HÀNG
       </Heading>
@@ -60,27 +60,17 @@ export function PaymentListAdmin() {
           borderX={'1px'}
           borderBottom={'2px'}
           width={'90%'}
-          marginLeft="5%"
+          marginX="auto"
           variant="simple"
           size={'lg'}
         >
           <Thead className=" h-3 bg-gray-600">
             <Tr>
-              <Th textAlign="center" color={'white'}>
-                Đơn hàng
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Số lượng
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Địa chỉ
-              </Th>
-              <Th textAlign="center" color={'white'}>
-                Số điện thoại
-              </Th>
-              <Th color={'white'} textAlign="center">
-                Tổng giá tiền
-              </Th>
+              <Th color={'white'}>Đơn hàng</Th>
+              <Th color={'white'}>Số lượng</Th>
+              <Th color={'white'}>Địa chỉ</Th>
+              <Th color={'white'}>Số điện thoại</Th>
+              <Th color={'white'}>Tổng giá tiền</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -112,13 +102,13 @@ export function PaymentListManage({ payment }: PaymentListProps) {
   }, [payment]);
   return (
     <Tr>
-      <Td textAlign="center">{payment.name.toString()}</Td>
-      <Td textAlign="center">{payment.quantity.toString()}</Td>
-      <Td textAlign="center">{payment.address}</Td>
-      <Td textAlign="center">{payment.numberPhone}</Td>
-      <Td textAlign="center">{Number(payment.total).toLocaleString('ms')}</Td>
+      <Td>{payment.name.toString()}</Td>
+      <Td>{payment.quantity.toString()}</Td>
+      <Td>{payment.address}</Td>
+      <Td>{payment.numberPhone}</Td>
+      <Td>{Number(payment.total).toLocaleString('ms')}</Td>
 
-      <Td padding={'0'} textAlign="center">
+      <Td padding={'0'}>
         <Button mt={'3.5'} onClick={onOpen} marginLeft={'5'} background={'red.500'} color="white">
           Xóa
         </Button>

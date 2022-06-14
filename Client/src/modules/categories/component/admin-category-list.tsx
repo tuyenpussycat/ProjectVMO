@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   Heading,
   Image,
   Link,
@@ -46,29 +47,25 @@ export function AdminCategory() {
 
   return (
     <LayoutAdmin>
-      <Box className="ml-40">
-        <Button colorScheme="green" size="md" onClick={() => navigate('/admin/category/create')}>
+      <Box className="ml-60 my-10">
+        <Button colorScheme="blue" size="md" onClick={() => navigate('/admin/category/create')}>
           Thêm danh mục
         </Button>
       </Box>
 
-      <Box mt="4">
+      <Box mt="4" pb="10">
         <Table
           borderX={'1px'}
           borderBottom={'2px'}
-          width={'80%'}
-          marginLeft="10%"
+          width={'70%'}
+          mx="auto"
           variant="simple"
           size={'lg'}
         >
           <Thead className=" h-3 bg-gray-600">
             <Tr>
-              <Th textAlign="center" color={'white'}>
-                Ảnh
-              </Th>
-              <Th color={'white'} textAlign="center">
-                Tên loại hàng
-              </Th>
+              <Th color={'white'}>Ảnh</Th>
+              <Th color={'white'}>Tên loại hàng</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -116,12 +113,12 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
           to={`/admin/category/edit/${category._id}`}
           textColor="blue.800"
         >
-          <img className="mx-[auto]" width={'120rem'} src={category.img}></img>
+          <img width={'120rem'} src={category.img}></img>
         </Link>
       </Td>
-      <Td textAlign="center">{category.name}</Td>
-      <Td padding={'0'} textAlign="center">
-        <Button mt={'3.5'} background={'green.500'}>
+      <Td>{category.name}</Td>
+      <Td padding={'0'}>
+        <Button mt={'3.5'} background={'blue.500'}>
           <Link
             _hover={{ textDecoration: 'none' }}
             as={NavLink}

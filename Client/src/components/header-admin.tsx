@@ -9,18 +9,12 @@ export function HeaderAdmin() {
     <Flex
       justifyContent={'space-between'}
       width={'100%'}
-      height="24"
-      className="bg-gray-500 fixed z-[9999999999999]"
+      className="bg-black fixed z-[9999999999999]"
     >
       <Box>
-        <Flex>
-          <Img
-            className="ml-7"
-            width={'16'}
-            marginTop="4"
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-          ></Img>
-          <Box className="text-4xl mt-[26px] mx-5 text-white">Admin</Box>
+        <Flex justifyContent={'center'}>
+          <Box className="text-2xl mt-8 text-white">ADMIN </Box>
+          <Box className="text-white text-2xl ml-3 opacity-70 mt-8">DASHBOARD</Box>
         </Flex>
       </Box>
     </Flex>
