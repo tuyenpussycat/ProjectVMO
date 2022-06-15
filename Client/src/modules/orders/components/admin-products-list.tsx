@@ -34,6 +34,8 @@ import { cancelOrder } from '../products.mutation';
 import { AuthContext } from '../../../contexts/auth';
 import { Search2Icon } from '@chakra-ui/icons';
 import { getValue } from '@testing-library/user-event/dist/utils';
+import InfoIcon from '@mui/icons-material/Info';
+import DeleteIcon from '@mui/icons-material/Delete';
 export function OrderManage() {
   const navigate = useNavigate();
   const { setChangeData } = useContext(AuthContext);
@@ -71,7 +73,7 @@ export function OrderManage() {
   const handleClick = () => {
     setValueSearch(keyword);
   };
-
+  window.scrollTo(0, 0);
   return (
     <LayoutAdmin>
       <Flex className="my-10 ml-40 ">
@@ -79,7 +81,13 @@ export function OrderManage() {
       </Flex>
       <Flex justifyContent={'space-between'}>
         <Box className="ml-40">
-          <Button colorScheme="blue" size="md" onClick={() => navigate('/admin/posts/create')}>
+          <Button
+            backgroundColor={'blue'}
+            color="white"
+            size="md"
+            onClick={() => navigate('/admin/posts/create')}
+            className="hover:text-black"
+          >
             Thêm sản phẩm
           </Button>
         </Box>
@@ -101,7 +109,7 @@ export function OrderManage() {
                 width={'10'}
                 marginRight="2"
                 height={'7'}
-                background={'red'}
+                background={'pink.400'}
                 color="white"
                 padding={'5px'}
                 onClick={handleClick}
@@ -123,8 +131,12 @@ export function OrderManage() {
             <Tr>
               <Th color={'white'}></Th>
               <Th color={'white'}>Tên sản phẩm</Th>
-              <Th color={'white'}>Giá sản phẩm</Th>
-              <Th color={'white'}>Số lượng</Th>
+              <Th color={'white'} textAlign={'right'}>
+                Giá sản phẩm
+              </Th>
+              <Th color={'white'} textAlign={'right'}>
+                Số lượng
+              </Th>
               <Th color={'white'}>Đánh giá</Th>
               <Th></Th>
             </Tr>
@@ -180,8 +192,10 @@ export function OrderListRowManage({ order }: OrderListRowProps) {
         <img src={order.img} className="h-20" width="100%"></img>
       </Td>
       <Td className="text-lg">{order.title}</Td>
-      <Td className="text-lg">{Number(order.price).toLocaleString('ms')}</Td>
-      <Td>{order.quantity}</Td>
+      <Td className="text-lg" textAlign={'right'}>
+        {Number(order.price).toLocaleString('ms')}
+      </Td>
+      <Td textAlign={'right'}>{order.quantity}</Td>
       <Td>
         <OrderStatusBadge status={order.status} />
       </Td>
@@ -194,12 +208,17 @@ export function OrderListRowManage({ order }: OrderListRowProps) {
             textColor="white"
             className="hover:text-black"
           >
-            Chi tiết
+            <Flex>
+              <InfoIcon></InfoIcon>{' '}
+              <Box mt={'2px'} ml="1">
+                Chi tiết
+              </Box>
+            </Flex>
           </Link>
         </Button>
 
         <Button mt={'3.5'} onClick={onOpen} marginLeft={'5'} background={'red.500'} color="white">
-          Xóa
+          <DeleteIcon></DeleteIcon>
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

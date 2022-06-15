@@ -27,6 +27,9 @@ import { fetchOrderDetails } from '../products.queries';
 import { Order } from '../products.types';
 import { OrderStatusBadge } from './product-status-badge';
 import { v4 as uuidv4 } from 'uuid';
+import DeleteIcon from '@mui/icons-material/Delete';
+import BuildIcon from '@mui/icons-material/Build';
+
 // import { EditItem } from './inputEdit';
 export function OrderEdit() {
   const params = useParams();
@@ -132,88 +135,23 @@ export function OrderEdit() {
 
   return (
     <LayoutAdmin>
-      <Flex mt={'8'} ml="8">
-        <Button bg={'blue.500'} color="white">
+      <Flex mt={'8'} ml="24">
+        <Button bg={'blue.500'} color="white" onClick={() => navigate('/admin/posts/create')}>
           Tạo sản phẩm mới
         </Button>
       </Flex>
       <Flex justifyContent={'space-between'} marginTop="5">
-        <Heading ml="8" as="h1" size="md" mb="8" pb="3" borderBottom="2px" borderColor="gray.200">
+        <Heading ml="24" as="h1" size="md" mb="8" pb="3" borderBottom="2px" borderColor="gray.200">
           Order {order?._id}
         </Heading>
-        <Box mt={8}>
-          {check ? (
-            <Button
-              className="hover:text-black"
-              background="blue.500"
-              color="white"
-              marginRight={'5'}
-              onClick={handleEditOrder}
-            >
-              Lưu
-            </Button>
-          ) : (
-            ''
-          )}
-          {check ? (
-            <Button
-              className="hover:text-black"
-              background="blue.500"
-              color="white"
-              marginRight={'5'}
-              onClick={() => setCheck(!check)}
-            >
-              Hủy
-            </Button>
-          ) : (
-            <Button
-              marginRight={'5'}
-              color="white"
-              className="hover:text-black"
-              background="blue"
-              onClick={() => setCheck(!check)}
-            >
-              Sửa
-            </Button>
-          )}
-
-          <Button
-            onClick={onOpen}
-            marginRight={'16'}
-            className="hover:text-black"
-            background={'red.500'}
-            color="white"
-          >
-            Xóa sản phẩm
-          </Button>
-          <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <Box className="text-center font-serif">{order?.title}</Box>
-              </ModalBody>
-
-              <ModalFooter>
-                <Button colorScheme="green" mr={3} onClick={onClose}>
-                  Hủy
-                </Button>
-                <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">
-                  Xóa
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
-        </Box>
       </Flex>
-      <Flex>
-        <Box ml="8" width={'24rem'} mr="8">
+      <Flex className="shadow-md w-[90%] mx-[auto] mt-4 bg-white p-4">
+        <Box ml="8" mt={10} width={'24rem'} mr="8">
           <img src={order?.img} className="h-64" width="100%"></img>
         </Box>
 
         {check ? (
-          <Box mt="4">
+          <Box mt="10">
             <Flex>
               <Box mr="4" fontWeight="medium" minW="32">
                 Tên sản phẩm:{' '}
@@ -285,7 +223,7 @@ export function OrderEdit() {
             </Flex>
           </Box>
         ) : (
-          <Box mt="4">
+          <Box mt="10">
             <Flex className="mt-[1rem]">
               <Box mr="4" fontWeight="medium" minW="32">
                 Tên sản phẩm:{' '}
@@ -326,6 +264,71 @@ export function OrderEdit() {
             </Flex>
           </Box>
         )}
+        <Box className="translate-x-96 pb-4">
+          {check ? (
+            <Button
+              className="hover:text-black"
+              background="blue.500"
+              color="white"
+              marginRight={'5'}
+              onClick={handleEditOrder}
+            >
+              Lưu
+            </Button>
+          ) : (
+            ''
+          )}
+          {check ? (
+            <Button
+              className="hover:text-black"
+              background="blue.500"
+              color="white"
+              marginRight={'5'}
+              onClick={() => setCheck(!check)}
+            >
+              Hủy
+            </Button>
+          ) : (
+            <Button
+              marginRight={'5'}
+              color="white"
+              className="hover:text-black"
+              background="blue"
+              onClick={() => setCheck(!check)}
+            >
+              <BuildIcon></BuildIcon> <Box ml={2}>Sửa</Box>
+            </Button>
+          )}
+
+          <Button
+            onClick={onOpen}
+            marginRight={'16'}
+            className="hover:text-black"
+            background={'red.500'}
+            color="white"
+          >
+            <DeleteIcon></DeleteIcon>
+          </Button>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Box className="text-center font-serif">{order?.title}</Box>
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="green" mr={3} onClick={onClose}>
+                  Hủy
+                </Button>
+                <Button background={'red.500'} color="white" onClick={deleteItem} variant="ghost">
+                  Xóa
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </Box>
       </Flex>
     </LayoutAdmin>
   );

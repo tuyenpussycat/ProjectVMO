@@ -30,8 +30,8 @@ export function AdminSidebar() {
       <Box width={'20rem'} height="100vw" className="fixed" background={'black'}>
         <Box>
           <Flex justifyContent={'center'}>
-            <Box className="text-2xl mt-8 text-white">ADMIN </Box>
-            <Box className="text-white text-2xl ml-3 opacity-70 mt-8">DASHBOARD</Box>
+            <Box className="text-2xl mt-8 text-white">TRANG </Box>
+            <Box className="text-white text-2xl ml-3 opacity-70 mt-8">QUẢN LÝ</Box>
           </Flex>
         </Box>
         <Box className="text-white ml-12 mt-7 mb-9 opacity-50">MENU</Box>

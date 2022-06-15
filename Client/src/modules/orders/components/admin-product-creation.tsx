@@ -22,7 +22,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { fetchCategory } from '../../categories/category.queries';
 import { Category } from '../../categories/category.types';
 import { ListResponse } from 'src/modules/shared/common.types';
-
 // const shippingsSchema = yup.string().required('Shipping address is required.');
 type FormItem = Item & {
   id: string;
@@ -138,7 +137,7 @@ export function OrderCreation() {
         as="h1"
         ml="5"
         size="md"
-        my="5"
+        my="10"
         pb="3"
         marginLeft={'32'}
         borderBottom="2px"
@@ -148,7 +147,7 @@ export function OrderCreation() {
         TẠO SẢN PHẨM MỚI
       </Heading>
 
-      <Box paddingX={'32'} paddingY="4" className="shadow-sm bg-white">
+      <Box paddingX={'32'} paddingY="4" className="shadow-lg w-[90%] mx-[auto] mt-10 bg-white">
         <form action="" onSubmit={handleCreateOrder}>
           <Box mb="6">
             <FormControl isRequired>

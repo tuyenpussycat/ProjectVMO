@@ -22,7 +22,8 @@ import { deleteCategory, editCategory } from '../category.mutation';
 import { fetchCategoryDetails } from '../category.queries';
 import { editOrder, cancelOrder } from '../../orders/products.mutation';
 import { Order } from '../../orders/products.types';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import BuildIcon from '@mui/icons-material/Build';
 export function AdminCategoryEdit() {
   const params = useParams();
   const toast = useToast();
@@ -131,7 +132,7 @@ export function AdminCategoryEdit() {
               background="blue.500"
               onClick={() => setCheck(!check)}
             >
-              Sửa
+              <BuildIcon></BuildIcon> <Box ml={'2'}>Sửa</Box>
             </Button>
           )}
 
@@ -142,7 +143,7 @@ export function AdminCategoryEdit() {
             background={'red.500'}
             color="white"
           >
-            Xóa sản phẩm
+            <DeleteIcon />
           </Button>
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

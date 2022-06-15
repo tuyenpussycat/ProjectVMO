@@ -28,7 +28,8 @@ import { LayoutAdmin } from '../../../components/layouts/layout-admin';
 import { deleteCategory } from '../category.mutation';
 import { fetchCategory } from '../category.queries';
 import { Category } from '../category.types';
-
+import InfoIcon from '@mui/icons-material/Info';
+import DeleteIcon from '@mui/icons-material/Delete';
 export function AdminCategory() {
   const navigate = useNavigate();
   const { changeData } = useContext(AuthContext);
@@ -126,7 +127,12 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
             textColor="white"
             className="hover:text-black"
           >
-            Chi tiết
+            <Flex>
+              <InfoIcon></InfoIcon>{' '}
+              <Box mt={'2px'} ml="1">
+                Chi tiết
+              </Box>
+            </Flex>
           </Link>
         </Button>
 
@@ -138,7 +144,7 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
           background={'red.500'}
           color="white"
         >
-          Xóa
+          <DeleteIcon></DeleteIcon>
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -146,7 +152,6 @@ export function CategoryListRowManage({ category }: CategoryListRowProps) {
             <ModalHeader>Bạn chắc chắn muốn xóa sản phẩm này?</ModalHeader>
             <ModalCloseButton />
             <ModalBody></ModalBody>
-
             <ModalFooter>
               <Button colorScheme="green" mr={3} onClick={onClose}>
                 Hủy
